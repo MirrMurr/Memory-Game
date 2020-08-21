@@ -12,7 +12,7 @@
 .header {
   display: flex;
   justify-content: space-between;
-  width: 100vh;
+  width: 80%;
   margin: 0 auto;
   margin-top: 20px;
   margin-bottom: 20px;
@@ -31,7 +31,7 @@
 }
 
 .highscores {
-  width: 7em;
+  width: 9em;
 }
 
 .counter,
@@ -75,26 +75,30 @@
   }
 }
 
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 900px) {
   .header {
-    width: 70vh;
+    width: 80%;
+  }
+
+  .highscores {
+    width: 10em;
   }
 }
 
 @media screen and (max-width: 570px) {
   .header {
-    width: 120vh;
+    width: 80%;
   }
 }
 
 @media screen and (max-width: 400px) {
   .header {
     display: block;
-    width: 40vh;
+    width: 80%;
   }
 
   hr {
-    width: 50%;
+    width: 55%;
     margin: 0 auto;
   }
 
@@ -112,10 +116,10 @@
 @media screen and (max-width: 350px) {
   .header {
     display: block;
-    width: 50vh;
+    width: 80%;
   }
 
   hr {
-    width: 58%;
+    width: 65%;
   }
 }
