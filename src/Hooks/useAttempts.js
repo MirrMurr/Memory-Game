@@ -1,5 +1,5 @@
 import store from 'Stores/appStore'
 
 export const useAttempts = () => {
-  return store.getState().attempts
+  return store.getState().gameStats.attempts
 }

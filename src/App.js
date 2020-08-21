@@ -7,24 +7,16 @@ import store from 'Stores/appStore'
 
 import 'Stylesheets/styles.scss'
 
-const calcBestTime = () => {
-  const { elapsedTime } = store.getState()
-  alert(elapsedTime)
-  store.dispatch({ type: 'SET_BEST_TIME', time: elapsedTime })
-  store.dispatch({ type: 'RESET_TIMER' })
-}
-
-const calcBestAttempts = () => {
-  const { attempts } = store.getState()
-  alert(attempts)
-  store.dispatch({ type: 'SET_BEST_ATTEMPTS', attempts: attempts })
-  store.dispatch({ type: 'RESET_ATTEMPTS' })
+const calcScores = () => {
+  const { attempts, elapsedTime } = store.getState().gameStats
+  alert(`Attempts: ${attempts}, Elapsed Time: ${elapsedTime} seconds`)
+  store.dispatch({ type: 'SET_BEST', attempts, elapsedTime })
 }
 
 const gameOver = () => {
   store.dispatch({ type: 'STOP_TIMER' })
-  calcBestTime()
-  calcBestAttempts()
+  calcScores()
+  store.dispatch({ type: 'RESET' })
 }
 
 const incAttempts = () => {
@@ -32,15 +24,15 @@ const incAttempts = () => {
 }
 
 const App = () => {
-  const { ticking, bestAttempts, bestTime } = store.getState()
+  const { ticking, highScores } = store.getState()
 
   return (
     <div className="App">
       <Counter />
-      <Statistics attempts={bestAttempts} time={bestTime} />
+      <Statistics attempts={highScores.attempts} time={highScores.elapsedTime} />
       <StartStopButton />
       <button disabled={!ticking} onClick={() => gameOver()}>End</button>
-      <button disabled={!ticking} onClick={() => incAttempts()}>Card</button>
+      <button disabled={!ticking} onClick={() => incAttempts()}>Attempt</button>
     </div>
   )
 }

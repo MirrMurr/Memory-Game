@@ -1,14 +1,10 @@
 import { combineReducers } from 'redux'
 import { ticking } from 'Reducers/ticking'
-import { bestTime } from 'Reducers/bestTime'
-import { elapsedTime } from 'Reducers/elapsedTime'
-import { attempts } from 'Reducers/attempts'
-import { bestAttempts } from 'Reducers/bestAttempts'
+import { gameStats } from 'Reducers/gameStats'
+import { highScores } from 'Reducers/highScores'
 
 export const rootReducer = combineReducers({
   ticking,
-  elapsedTime,
-  bestTime,
-  attempts,
-  bestAttempts
+  gameStats,
+  highScores
 })
