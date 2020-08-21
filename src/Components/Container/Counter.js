@@ -2,9 +2,10 @@ import React from 'react'
 import { Statistics } from 'Components/Presentational/Statistics'
 
 import { useTimer } from 'Hooks/useTimer'
+import { useAttempts } from 'Hooks/useAttempts'
 
 export const Counter = () => {
-  const attempts = 17
+  const attempts = useAttempts()
   const elapsedTime = useTimer()
 
   return (
