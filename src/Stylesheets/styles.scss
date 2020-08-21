@@ -1,11 +1,42 @@
-/* * {
+* {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-} */
-
-.body {
   font-family: Arial, Helvetica, sans-serif;
+}
+
+.header-container {
+  width: 100%;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  width: 100vh;
+  margin: 0 auto;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding: 0.25em;
+  border-radius: 10px;
+  background-color: #EBEBEB;
+  box-shadow: 0 1px 15px rgba(0, 0, 0, 0.5);
+}
+
+.highscores,
+.game-stats {
+  display: flex;
+  justify-content: space-between;
+  width: 10em;
+  margin: 5px 20px;
+}
+
+.highscores {
+  width: 7em;
+}
+
+.counter,
+.highscores {
+  padding-top: 5px;
 }
 
 .start-stop-btn {
@@ -41,5 +72,50 @@
 
   &:hover {
     background-color: #E85318;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .header {
+    width: 70vh;
+  }
+}
+
+@media screen and (max-width: 570px) {
+  .header {
+    width: 120vh;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .header {
+    display: block;
+    width: 40vh;
+  }
+
+  hr {
+    width: 50%;
+    margin: 0 auto;
+  }
+
+  .highscores,
+  .game-stats {
+    display: flex;
+    justify-content: space-between;
+    width: 10em;
+    margin: 0 auto;
+    margin-top: 5px;
+    margin-bottom: 5px;
+  }
+}
+
+@media screen and (max-width: 350px) {
+  .header {
+    display: block;
+    width: 50vh;
+  }
+
+  hr {
+    width: 58%;
   }
 }

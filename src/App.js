@@ -1,7 +1,6 @@
 import React from 'react'
-import { Counter } from 'Components/Container/Counter'
-import { StartStopButton } from 'Components/Container/StartStopButton'
-import { Statistics } from 'Components/Presentational/Statistics'
+import { Header } from 'Components/Presentational/Header'
+import { GameTable } from 'Components/Container/GameTable'
 
 import store from 'Stores/appStore'
 
@@ -24,13 +23,12 @@ const incAttempts = () => {
 }
 
 const App = () => {
-  const { ticking, highScores } = store.getState()
+  const { ticking } = store.getState()
 
   return (
     <div className="App">
-      <Counter />
-      <Statistics attempts={highScores.attempts} time={highScores.elapsedTime} />
-      <StartStopButton />
+      <Header />
+      <GameTable />
       <button disabled={!ticking} onClick={() => gameOver()}>End</button>
       <button disabled={!ticking} onClick={() => incAttempts()}>Attempt</button>
     </div>
