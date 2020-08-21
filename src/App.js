@@ -1,42 +1,31 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
+import { Counter } from 'Components/Container/Counter'
+import { StartStopButton } from 'Components/Container/StartStopButton'
+import { Statistics } from 'Components/Presentational/Statistics'
 
-function App () {
-  const [ticking, setTicking] = useState(false)
-  const [elapsedTime, setElapsedTime] = useState(0)
+import store from 'Stores/appStore'
 
-  useEffect(() => {
-    if (ticking) {
-      const id = setInterval(() => tick(), 1000)
-      return () => {
-        clearInterval(id)
-      }
-    }
-  }, [ticking])
+import 'Stylesheets/styles.scss'
 
-  const tick = () => {
-    setElapsedTime(elapsedTime => elapsedTime + 1)
-  }
+const endTimer = () => {
+  store.dispatch({ type: 'STOP_TIMER' })
+  const { bestTime, elapsedTime } = store.getState()
+  const jobb = bestTime < elapsedTime ? bestTime : elapsedTime
+  store.dispatch({ type: 'SET_BEST_TIME', time: jobb })
+  store.dispatch({ type: 'RESET_TIMER' })
+}
 
-  const start = () => {
-    setTicking(true)
-  }
+const endGame = () => {
+  endTimer()
+}
 
-  const stop = () => {
-    setTicking(false)
-  }
-
-  const startStop = () => {
-    if (ticking) {
-      stop()
-    } else {
-      start()
-    }
-  }
-
+const App = () => {
   return (
     <div className="App">
-      <h1>{elapsedTime}</h1>
-      <button onClick={startStop}>{ticking ? 'Pause' : 'Play'}</button>
+      <Counter />
+      <Statistics attempts={22} time={store.getState().bestTime} />
+      <StartStopButton />
+      <button onClick={() => endGame()}>End</button>
     </div>
   )
 }
