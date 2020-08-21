@@ -30,10 +30,6 @@
   margin: 5px 20px;
 }
 
-.highscores {
-  width: 9em;
-}
-
 .counter,
 .highscores {
   padding-top: 5px;
@@ -75,19 +71,9 @@
   }
 }
 
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 500px) {
   .header {
-    width: 80%;
-  }
-
-  .highscores {
-    width: 10em;
-  }
-}
-
-@media screen and (max-width: 570px) {
-  .header {
-    width: 80%;
+    width: 90%;
   }
 }
 
@@ -114,11 +100,6 @@
 }
 
 @media screen and (max-width: 350px) {
-  .header {
-    display: block;
-    width: 80%;
-  }
-
   hr {
     width: 65%;
   }

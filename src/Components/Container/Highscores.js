@@ -8,7 +8,7 @@ export const Highscores = () => {
 
   return (
     <div className="highscores">
-      <p>BEST:</p>
+      <p>Highscores:</p>
       <Statistics attempts={highScores.attempts} time={highScores.elapsedTime} />
     </div>
   )

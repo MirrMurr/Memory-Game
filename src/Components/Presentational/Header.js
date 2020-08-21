@@ -9,7 +9,7 @@ export const Header = () => {
     <div className="header-container">
       <div className="header">
         <Highscores />
-        <hr/>
+        <hr />
         <div className="game-stats">
           <Counter />
           <StartStopButton />
