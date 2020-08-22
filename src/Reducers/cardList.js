@@ -8,6 +8,9 @@ export const cardList = (state = [], action) => {
         card(undefined, action)
       ]
     case 'FLIP_CARD':
+    case 'FLIP_BACK':
+    case 'FOUND_CARD':
+    case 'RESET':
       return state.map(c => card(c, action))
     default:
       return state

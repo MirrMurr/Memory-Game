@@ -24,11 +24,10 @@ export const useFetchData = () => {
   useEffect(() => {
     const array = []
     let id = 1
-    for (let i = 0; i < 10; ++i) {
+    for (let i = 0; i < images.length; ++i) {
       const img = images[i]
-      // TODO move these to Reducer
-      array.push({ id: id++, img: img, alt: i, flipped: false })
-      array.push({ id: id++, img: img, alt: i, flipped: false })
+      array.push({ id: id++, img: img, alt: i, flipped: false, found: false })
+      array.push({ id: id++, img: img, alt: i, flipped: false, found: false })
     }
     shuffle(array)
     setData(array)
