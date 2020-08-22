@@ -1,10 +1,9 @@
-import React, { useState } from 'react'
+import React from 'react'
+import PropTypes from 'prop-types'
 
-export const FlipCard = ({ front, back }) => {
-  const [flipped, setFlipped] = useState(false)
-
+export const FlipCard = ({ front, back, onClick, flipped }) => {
   return (
-    <div className="flip-card" onClick={() => setFlipped(!flipped)}>
+    <div className="flip-card" onClick={() => onClick()}>
       <div className={`flip-card-inner ${flipped ? 'flipped' : ''}`}>
         <div className="flip-card-front">
           {front}
@@ -19,5 +18,7 @@ export const FlipCard = ({ front, back }) => {
 
 FlipCard.propTypes = {
   front (a, b, c) { },
-  back (a, b, c) { }
+  back (a, b, c) { },
+  onClick: PropTypes.func,
+  flipped: PropTypes.bool
 }
