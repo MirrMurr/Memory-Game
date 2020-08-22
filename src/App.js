@@ -8,6 +8,7 @@ import 'Stylesheets/styles.scss'
 
 const calcScores = () => {
   const { attempts, elapsedTime } = store.getState().gameStats
+  // eslint-disable-next-line no-undef
   alert(`Attempts: ${attempts}, Elapsed Time: ${elapsedTime} seconds`)
   store.dispatch({ type: 'SET_BEST', attempts, elapsedTime })
 }
