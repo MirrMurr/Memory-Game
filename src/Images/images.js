@@ -11,13 +11,23 @@ import Projects from 'Images/icons/Projects.png'
 
 export const images = [
   Books,
+  Books,
+  Cloudstorage,
   Cloudstorage,
   Design,
+  Design,
+  Elte,
   Elte,
   Grape,
+  Grape,
+  Knowledgebase,
   Knowledgebase,
   Learning,
+  Learning,
+  Lectures,
   Lectures,
   Local,
+  Local,
+  Projects,
   Projects
 ]

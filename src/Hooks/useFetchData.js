@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
+import { useDispatch } from 'react-redux'
 import { images } from 'Images/images'
-import store from 'Stores/appStore'
 
 const swap = (arr, a, b) => {
   const c = arr[a]
@@ -20,23 +20,26 @@ const shuffle = (arr) => {
 
 export const useFetchData = () => {
   const [data, setData] = useState([])
+  const dispatch = useDispatch()
 
   useEffect(() => {
-    const array = []
     let id = 1
-    for (let i = 0; i < images.length; ++i) {
-      const img = images[i]
-      array.push({ id: id++, img: img, alt: i, flipped: false, found: false })
-      array.push({ id: id++, img: img, alt: i, flipped: false, found: false })
-    }
+    let alt = 1
+    const array = images.map((img, index) => {
+      return {
+        id: id++,
+        img: img,
+        alt: index % 2 === 0 ? alt : alt++,
+        flipped: false,
+        found: false
+      }
+    })
     shuffle(array)
     setData(array)
   }, [])
 
   useEffect(() => {
-    data.forEach(card => {
-      store.dispatch({ type: 'ADD_CARD', ...card })
-    })
+    data.forEach(card => dispatch({ type: 'ADD_CARD', ...card }))
   }, [data])
 
   return data

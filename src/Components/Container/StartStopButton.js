@@ -1,23 +1,27 @@
 import React from 'react'
-
-import store from 'Stores/appStore'
+import { useSelector, useDispatch } from 'react-redux'
 
 export const StartStopButton = () => {
-  const { ticking } = store.getState()
+  const dispatch = useDispatch()
+  const { ticking } = useSelector(state => state)
 
   const start = () => {
-    store.dispatch({ type: 'START_TIMER' })
+    dispatch({ type: 'START_TIMER' })
+    dispatch({ type: 'SET_START_TIME', time: Date.now() })
   }
 
-  const stop = () => {
-    store.dispatch({ type: 'STOP_TIMER' })
+  const stop = () => dispatch({ type: 'STOP_TIMER' })
+
+  const reset = () => {
+    dispatch({ type: 'STOP_TIMER' })
+    dispatch({ type: 'RESET' })
   }
 
   return (
     <div>
       {(
         ticking
-          ? <button className="pause-btn start-stop-btn" onClick={stop}>PAUSE</button>
+          ? <button className="reset-btn start-stop-btn" onClick={reset}>RESET</button>
           : <button className="play-btn start-stop-btn" onClick={start}>PLAY</button>
       )}
     </div>

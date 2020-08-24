@@ -1,10 +1,9 @@
 import React from 'react'
+import { useSelector } from 'react-redux'
 import { Statistics } from 'Components/Presentational/Statistics'
 
-import store from 'Stores/appStore'
-
 export const Highscores = () => {
-  const { highScores } = store.getState()
+  const { highScores } = useSelector(state => state)
 
   return (
     <div className="highscores">
