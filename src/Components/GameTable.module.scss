@@ -1,0 +1,24 @@
+.gameTable ul {
+  margin: 0 auto;
+  list-style-type: none;
+}
+
+.gameTable ul li {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+
+.gridContainer {
+  display: grid;
+  grid-template-columns: auto auto auto auto auto;
+  align-content: center;
+  width: 90%;
+  height: 100%;
+}
+
+.cardFrontImg {
+  width: 80%;
+  height: 80%;
+  margin-top: 10%;
+}

@@ -2,6 +2,7 @@ import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
   ticking: false,
+  amountOfFlips: 0,
   attempts: 0,
   elapsedTime: 0,
   startTime: 0
@@ -18,6 +19,9 @@ const gameStatsSlice = createSlice({
     stopTimer (state, action) {
       state.ticking = false
     },
+    setAmountOfFlips (state, action) {
+      state.amountOfFlips = action.payload
+    },
     incrementAttempts (state, action) {
       state.attempts++
     },
@@ -31,5 +35,5 @@ const gameStatsSlice = createSlice({
   }
 })
 
-export const { startTimer, stopTimer, incrementAttempts, setElapsedTime, setStartTime, resetGame } = gameStatsSlice.actions
+export const { startTimer, stopTimer, incrementAttempts, setAmountOfFlips, setElapsedTime, setStartTime, resetGame } = gameStatsSlice.actions
 export default gameStatsSlice.reducer

@@ -1,0 +1,56 @@
+.headerContainer {
+  width: 100%;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  width: 80%;
+  margin: 0 auto;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding: 0.25em;
+  border-radius: 10px;
+  background-color: #F9F9F9;
+  box-shadow: 0 1px 15px rgba(0, 0, 0, 0.5);
+}
+
+.gameStats {
+  display: flex;
+  justify-content: space-between;
+  width: 10em;
+  margin: 5px 20px;
+}
+
+@media screen and (max-width: 500px) {
+  .header {
+    width: 90%;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .header {
+    display: block;
+    width: 80%;
+  }
+
+  hr {
+    width: 55%;
+    margin: 0 auto;
+  }
+
+  .gameStats {
+    display: flex;
+    justify-content: space-between;
+    width: 10em;
+    margin: 0 auto;
+    margin-top: 5px;
+    margin-bottom: 5px;
+  }
+}
+
+@media screen and (max-width: 350px) {
+  hr {
+    width: 65%;
+  }
+}

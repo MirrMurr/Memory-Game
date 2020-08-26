@@ -11,7 +11,7 @@ export const useTimer = () => {
   useEffect(() => {
     setTimerTime(elapsedTime)
     if (ticking) {
-      const id = setInterval(() => tick(), 200)
+      const id = setInterval(() => tick(), 500)
       return () => {
         clearInterval(id)
       }

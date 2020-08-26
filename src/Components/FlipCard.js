@@ -1,14 +1,15 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import styles from './FlipCard.module.scss'
 
 export const FlipCard = ({ front, back, onClick, flipped }) => {
   return (
-    <div className="flip-card" onClick={() => onClick()}>
-      <div className={`flip-card-inner ${flipped ? 'flipped' : ''}`}>
-        <div className="flip-card-front">
+    <div className={styles.flipCard} onClick={() => onClick()}>
+      <div className={`${styles.flipCardInner} ${flipped ? `${styles.flipped}` : ''}`}>
+        <div className={styles.flipCardFront}>
           {front}
         </div>
-        <div className="flip-card-back">
+        <div className={styles.flipCardBack}>
           {back}
         </div>
       </div>

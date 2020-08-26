@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 
 import { useGameStats } from 'Features/gameStats/useGameStats'
@@ -7,10 +7,9 @@ import { useCardList } from 'Features/cardList/useCardList'
 import { resetCards } from 'Features/cardList/cardListSlice'
 
 export const useGameTable = () => {
-  const { ticking, attempts, elapsedTime, incrementAttempts, resetGame } = useGameStats()
+  const { ticking, attempts, amountOfFlips, elapsedTime, incrementAttempts, resetGame, setAmountOfFlips } = useGameStats()
   const { cardList, flipCard, foundCard, flipBackNotFoundCards } = useCardList()
   const { setBest } = useHighScores()
-  const [amountOfFlips, setAmountOfFlips] = useState(0)
   const dispatch = useDispatch()
 
   useEffect(() => {
@@ -55,14 +54,14 @@ export const useGameTable = () => {
             dispatch(foundCard(card2.id))
           }
         }
-        setAmountOfFlips(0)
+        dispatch(setAmountOfFlips(0))
         dispatch(flipBackNotFoundCards())
         return
       default:
         break
     }
 
-    setAmountOfFlips(amountOfFlips => amountOfFlips + 1)
+    dispatch(setAmountOfFlips(amountOfFlips + 1))
     dispatch(flipCard(id))
   }
 

@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { init } from 'Features/cardList/methods'
+import { init, shuffle } from 'Features/cardList/methods'
 
 const initialState = []
 
@@ -19,7 +19,7 @@ const cardListSlice = createSlice({
     flipBackNotFoundCards: state => state.map(card => {
       return card.found ? card : { ...card, flipped: false }
     }),
-    resetCards: state => state.map(card => ({ ...card, flipped: false, found: false }))
+    resetCards: state => shuffle(state.map(card => ({ ...card, flipped: false, found: false })))
   }
 })
 

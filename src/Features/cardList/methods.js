@@ -14,6 +14,7 @@ export const shuffle = (arr) => {
   for (let i = arr.length - 1; i > 1; --i) {
     swap(arr, random(0, i), i)
   }
+  return arr
 }
 
 export const init = () => {
@@ -29,6 +30,5 @@ export const init = () => {
     }
   })
 
-  // shuffle(array)
-  return array
+  return shuffle(array)
 }
