@@ -1,11 +1,15 @@
 import { useState, useEffect } from 'react'
-import { useSelector, useDispatch } from 'react-redux'
+import { useDispatch } from 'react-redux'
+
+import { useGameStats } from 'Features/gameStats/useGameStats'
+import { useHighScores } from 'Features/highScores/useHighScores'
+import { useCardList } from 'Features/cardList/useCardList'
+import { resetCards } from 'Features/cardList/cardListSlice'
 
 export const useGameTable = () => {
-  const ticking = useSelector(state => state.ticking)
-  const cardList = useSelector(state => state.cardList)
-  const attempts = useSelector(state => state.gameStats.attempts)
-  const elapsedTime = useSelector(state => state.gameStats.elapsedTime)
+  const { ticking, attempts, elapsedTime, incrementAttempts, resetGame } = useGameStats()
+  const { cardList, flipCard, foundCard, flipBackNotFoundCards } = useCardList()
+  const { setBest } = useHighScores()
   const [amountOfFlips, setAmountOfFlips] = useState(0)
   const dispatch = useDispatch()
 
@@ -17,6 +21,14 @@ export const useGameTable = () => {
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [cardList, ticking])
+
+  const gameOver = () => {
+    dispatch(setBest({ attempts, elapsedTime }))
+    // eslint-disable-next-line no-undef
+    alert(`Attempts: ${attempts}, Elapsed Time: ${elapsedTime / 1000} seconds`)
+    dispatch(resetGame())
+    dispatch(resetCards())
+  }
 
   const arrayEquals = (a, b) => {
     return Array.isArray(a) &&
@@ -31,7 +43,7 @@ export const useGameTable = () => {
 
     switch (amountOfFlips) {
       case 1:
-        dispatch({ type: 'INC_ATTEMPTS' })
+        dispatch(incrementAttempts())
         break
       case 2:
         // eslint-disable-next-line no-case-declarations
@@ -39,28 +51,20 @@ export const useGameTable = () => {
         if (!arrayEquals(flippedCards, [])) {
           const [card1, card2] = flippedCards
           if (card1.alt === card2.alt) {
-            dispatch({ type: 'FOUND_CARD', id: card1.id })
-            dispatch({ type: 'FOUND_CARD', id: card2.id })
+            dispatch(foundCard(card1.id))
+            dispatch(foundCard(card2.id))
           }
         }
         setAmountOfFlips(0)
-        dispatch({ type: 'FLIP_BACK' })
+        dispatch(flipBackNotFoundCards())
         return
       default:
         break
     }
 
     setAmountOfFlips(amountOfFlips => amountOfFlips + 1)
-    dispatch({ type: 'FLIP_CARD', id })
+    dispatch(flipCard(id))
   }
 
-  const gameOver = () => {
-    dispatch({ type: 'STOP_TIMER' })
-    // eslint-disable-next-line no-undef
-    alert(`Attempts: ${attempts}, Elapsed Time: ${elapsedTime / 1000} seconds`)
-    dispatch({ type: 'SET_BEST', attempts, elapsedTime })
-    dispatch({ type: 'RESET' })
-  }
-
-  return { ticking, cardList, flipCardById, gameOver, arrayEquals }
+  return { ticking, cardList, attempts, flipCardById, gameOver, arrayEquals }
 }

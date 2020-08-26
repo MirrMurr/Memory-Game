@@ -4,6 +4,7 @@ import { Provider } from 'react-redux'
 import App from 'App'
 
 import store from 'Stores/appStore'
+import { initCards } from 'Features/cardList/cardListSlice'
 
 const render = () => {
   ReactDOM.render(
@@ -16,6 +17,6 @@ const render = () => {
   )
 }
 
-store.dispatch({ type: 'INIT_CARDS' })
+store.dispatch(initCards())
 store.subscribe(render)
 render()

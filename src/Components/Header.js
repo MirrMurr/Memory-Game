@@ -1,8 +1,8 @@
 import React from 'react'
 
-import { Counter } from 'Components/Container/Counter'
-import { StartStopButton } from 'Components/Container/StartStopButton'
-import { Highscores } from 'Components/Container/Highscores'
+import { Counter } from 'Components/Counter'
+import { StartStopButton } from 'Components/StartStopButton'
+import { Highscores } from 'Components/Highscores'
 
 export const Header = () => {
   return (

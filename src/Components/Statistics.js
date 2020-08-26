@@ -1,5 +1,5 @@
 import React from 'react'
-import { FormattedTime } from 'Components/Presentational/FormattedTime'
+import { FormattedTime } from 'Components/FormattedTime'
 import PropTypes from 'prop-types'
 
 export const Statistics = ({ attempts, time }) => {

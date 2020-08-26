@@ -1,6 +1,6 @@
 import React from 'react'
 import { useGameTable } from 'Hooks/useGameTable'
-import { FlipCard } from 'Components/Presentational/Card'
+import { FlipCard } from 'Components/FlipCard'
 import cardBackImg from 'Images/card-back-glossy-rounded.png'
 
 export const GameTable = () => {
