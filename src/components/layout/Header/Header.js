@@ -1,8 +1,8 @@
 import React from 'react'
 import styles from './Header.module.scss'
-import { Counter } from 'Components/Counter'
-import { StartStopButton } from 'Components/StartStopButton'
-import { Highscores } from 'Components/Highscores'
+import { Counter } from 'components/views/Counter/Counter'
+import { StartStopButton } from 'components/views/StartStopButton/StartStopButton'
+import { Highscores } from 'components/views/Highscores/Highscores'
 
 export const Header = () => {
   return (

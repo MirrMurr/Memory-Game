@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 
-import { useGameStats } from 'Features/gameStats/useGameStats'
+import { useGameStats } from 'hooks/useGameStats'
 
 export const useTimer = () => {
   const { ticking, elapsedTime, startTime, setElapsedTime } = useGameStats()

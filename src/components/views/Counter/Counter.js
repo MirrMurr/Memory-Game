@@ -1,7 +1,7 @@
 import React from 'react'
-import { Statistics } from 'Components/Statistics'
-import { useTimer } from 'Hooks/useTimer'
-import { useGameStats } from 'Features/gameStats/useGameStats'
+import { Statistics } from 'components/common/Statistics/Statistics'
+import { useTimer } from 'hooks/useTimer'
+import { useGameStats } from 'hooks/useGameStats'
 
 export const Counter = () => {
   const { attempts } = useGameStats()

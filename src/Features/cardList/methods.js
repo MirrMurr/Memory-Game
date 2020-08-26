@@ -1,4 +1,4 @@
-import { images } from 'Images/images'
+import { images } from 'images/images'
 
 export const swap = (arr, a, b) => {
   const c = arr[a]
@@ -30,5 +30,6 @@ export const init = () => {
     }
   })
 
-  return shuffle(array)
+  // shuffle(array)
+  return array
 }

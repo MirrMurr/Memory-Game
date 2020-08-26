@@ -1,8 +1,8 @@
 import React from 'react'
-import { Header } from 'Components/Header'
-import { GameTable } from 'Components/GameTable'
+import { Header } from 'components/layout/Header/Header'
+import { GameTable } from 'components/views/GameTable/GameTable'
 
-import 'Stylesheets/styles.scss'
+import 'styles.scss'
 
 const App = () => {
   return (

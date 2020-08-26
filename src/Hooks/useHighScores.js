@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux'
 
-import { setBest } from 'Features/highScores/highScoresSlice'
+import { setBest } from 'store/highScores'
 
 export const useHighScores = () => {
   const bestAttempts = useSelector(state => state.highScores.attempts)

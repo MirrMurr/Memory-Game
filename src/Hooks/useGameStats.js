@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux'
-import { startTimer, stopTimer, incrementAttempts, setAmountOfFlips, setElapsedTime, setStartTime, resetGame } from 'Features/gameStats/gameStatsSlice'
+import { startTimer, stopTimer, incrementAttempts, setAmountOfFlips, setElapsedTime, setStartTime, resetGame } from 'store/gameStats'
 
 export const useGameStats = () => {
   const ticking = useSelector(state => state.gameStats.ticking)

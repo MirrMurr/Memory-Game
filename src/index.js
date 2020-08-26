@@ -3,8 +3,8 @@ import ReactDOM from 'react-dom'
 import { Provider } from 'react-redux'
 import App from 'App'
 
-import store from 'Stores/appStore'
-import { initCards } from 'Features/cardList/cardListSlice'
+import store from 'store/index'
+import { initCards } from 'store/cardList'
 
 const render = () => {
   ReactDOM.render(

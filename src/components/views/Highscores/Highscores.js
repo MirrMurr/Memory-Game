@@ -1,7 +1,7 @@
 import React from 'react'
 import styles from './Highscores.module.scss'
-import { Statistics } from 'Components/Statistics'
-import { useHighScores } from 'Features/highScores/useHighScores'
+import { Statistics } from 'components/common/Statistics/Statistics'
+import { useHighScores } from 'hooks/useHighScores'
 
 export const Highscores = () => {
   const { bestAttempts, bestTime } = useHighScores()
