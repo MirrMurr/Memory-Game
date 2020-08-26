@@ -1,13 +1,14 @@
 import React from 'react'
-import { FormattedTime } from 'Components/FormattedTime'
 import PropTypes from 'prop-types'
+import { format } from 'date-fns'
+
 import styles from './Statistics.module.scss'
 
 export const Statistics = ({ attempts, time }) => {
   return (
     <div className={styles.statistics}>
       <span>{attempts}  |  </span>
-      <FormattedTime time={time} />
+      <span>{format(time, 'mm:ss')}</span>
     </div>
   )
 }
