@@ -30,6 +30,6 @@ export const init = () => {
     }
   })
 
-  // shuffle(array)
+  shuffle(array)
   return array
 }

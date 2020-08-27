@@ -1,10 +1,10 @@
 import React from 'react'
+import { useSelector } from 'react-redux'
 import { Statistics } from 'components/common/Statistics/Statistics'
 import { useTimer } from 'hooks/useTimer'
-import { useGameStats } from 'hooks/useGameStats'
 
 export const Counter = () => {
-  const { attempts } = useGameStats()
+  const attempts = useSelector(state => state.gameStats.attempts)
   const elapsedTime = useTimer()
 
   return (

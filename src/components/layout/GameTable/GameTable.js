@@ -7,7 +7,7 @@ import cardBackImg from 'images/card-back-glossy-rounded.png'
 export const GameTable = () => {
   const { cards, flipCardById } = useGameTable()
 
-  const cardBack = <img className="card-back-img" src={cardBackImg} alt="card back" />
+  const cardBack = <img className={styles.cardBackImg} src={cardBackImg} alt="card back" />
 
   return (
     <div className={styles.gameTable}>

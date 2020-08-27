@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useCallback } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { flipCard, foundCard, flipBackNotFoundCards, resetCards } from 'store/cardList'
 import { incrementAttempts, setAmountOfFlips, resetGame } from 'store/gameStats'
@@ -14,12 +14,12 @@ export const useGameTable = () => {
 
   const dispatch = useDispatch()
 
-  const gameOver = () => {
+  const gameOver = useCallback(() => {
     dispatch(setBest({ attempts, elapsedTime }))
     window.alert(`Attempts: ${attempts}, Elapsed Time: ${elapsedTime / 1000} seconds`)
     dispatch(resetGame())
     dispatch(resetCards())
-  }
+  }, [attempts, elapsedTime, dispatch])
 
   useEffect(() => {
     if (ticking) {
@@ -27,7 +27,7 @@ export const useGameTable = () => {
         gameOver()
       }
     }
-  }, [cards, ticking])
+  }, [cards, ticking, gameOver])
 
   const arrayEquals = (a, b) => {
     return Array.isArray(a) &&

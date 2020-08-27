@@ -1,12 +1,15 @@
-import { useState, useEffect } from 'react'
-import { useDispatch } from 'react-redux'
-
-import { useGameStats } from 'hooks/useGameStats'
+import { useState, useEffect, useCallback } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { setElapsedTime } from 'store/gameStats'
 
 export const useTimer = () => {
-  const { ticking, elapsedTime, startTime, setElapsedTime } = useGameStats()
+  const { ticking, elapsedTime, startTime } = useSelector(state => state.gameStats)
   const [timerTime, setTimerTime] = useState(0)
   const dispatch = useDispatch()
+
+  const tick = useCallback(() => {
+    setTimerTime(Date.now() - startTime)
+  }, [startTime])
 
   useEffect(() => {
     setTimerTime(elapsedTime)
@@ -16,17 +19,11 @@ export const useTimer = () => {
         clearInterval(id)
       }
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [ticking])
-
-  const tick = () => {
-    setTimerTime(Date.now() - startTime)
-  }
+  }, [ticking, elapsedTime, tick])
 
   useEffect(() => {
     dispatch(setElapsedTime(timerTime))
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [timerTime])
+  }, [timerTime, dispatch])
 
   return timerTime
 }

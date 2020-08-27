@@ -23,7 +23,7 @@ const cardListSlice = createSlice({
         return card.found ? card : { ...card, flipped: false }
       })
     }),
-    resetCards: state => ({cards: shuffle(state.cards.map(card => ({ ...card, flipped: false, found: false })))})
+    resetCards: state => ({ cards: shuffle(state.cards.map(card => ({ ...card, flipped: false, found: false }))) })
   }
 })
 
